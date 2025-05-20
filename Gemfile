@@ -48,7 +48,7 @@ end
 
 group :test do
   gem "shoulda-matchers", "~> 6.0"
-  gem 'pdf-inspector', require: "pdf/inspector"
+  gem "pdf-inspector", require: "pdf/inspector"
 end
 
 gem "prawn-rails"

@@ -17,7 +17,7 @@ RSpec.describe GenerateSchedulePdf do
                       classroom: classroom1,
                       start_time: Time.parse('09:00'),
                       duration_minutes: 50,
-                      weekdays: ['monday', 'wednesday']
+                      weekdays: [ 'monday', 'wednesday' ]
     )
 
     section2 = create(:section,
@@ -26,10 +26,10 @@ RSpec.describe GenerateSchedulePdf do
                       classroom: classroom2,
                       start_time: Time.parse('13:30'),
                       duration_minutes: 80,
-                      weekdays: ['tuesday', 'thursday']
+                      weekdays: [ 'tuesday', 'thursday' ]
     )
 
-    student.sections << [section1, section2]
+    student.sections << [ section1, section2 ]
   end
 
   describe '#initialize' do
