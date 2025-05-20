@@ -6,7 +6,7 @@ class CreateSections < ActiveRecord::Migration[8.0]
       t.references :classroom, null: false
       t.integer :duration_minutes, null: false
       t.time :start_time, null: false
-      t.integer :weekdays, array: true, default: []
+      t.string :weekdays, array: true, default: []
       t.timestamps
     end
   end

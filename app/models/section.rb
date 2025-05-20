@@ -5,7 +5,7 @@
 #  id               :bigint           not null, primary key
 #  duration_minutes :integer          not null
 #  start_time       :time             not null
-#  weekdays         :integer          default([]), is an Array
+#  weekdays         :string           default([]), is an Array
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  classroom_id     :bigint           not null
@@ -19,6 +19,8 @@
 #  index_sections_on_teacher_id    (teacher_id)
 #
 class Section < ApplicationRecord
+  VALID_WEEKDAYS = %w[monday tuesday wednesday thursday friday saturday sunday]
+
   belongs_to :teacher, class_name: "User", foreign_key: "teacher_id"
   belongs_to :subject
   belongs_to :classroom
@@ -27,4 +29,5 @@ class Section < ApplicationRecord
 
   validates :start_time, :duration_minutes, :weekdays, presence: true
   validates :duration_minutes, inclusion: { in: [ 50, 80 ] }
+  validates :weekdays, inclusion: { in: VALID_WEEKDAYS }
 end

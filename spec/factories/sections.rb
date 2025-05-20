@@ -5,7 +5,7 @@
 #  id               :bigint           not null, primary key
 #  duration_minutes :integer          not null
 #  start_time       :time             not null
-#  weekdays         :integer          default([]), is an Array
+#  weekdays         :string           default([]), is an Array
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  classroom_id     :bigint           not null
@@ -25,6 +25,6 @@ FactoryBot.define do
     classroom
     start_time { '08:00' }
     duration_minutes { 50 }
-    weekdays { [1, 3, 5] } # Monday, Wednesday, Friday
+    weekdays { Section::VALID_WEEKDAYS.sample(3) }
   end
 end

@@ -6,7 +6,7 @@
 #  id               :bigint           not null, primary key
 #  duration_minutes :integer          not null
 #  start_time       :time             not null
-#  weekdays         :integer          default([]), is an Array
+#  weekdays         :string           default([]), is an Array
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  classroom_id     :bigint           not null

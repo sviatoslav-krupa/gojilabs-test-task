@@ -35,7 +35,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_20_094633) do
     t.bigint "classroom_id", null: false
     t.integer "duration_minutes", null: false
     t.time "start_time", null: false
-    t.integer "weekdays", default: [], array: true
+    t.string "weekdays", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["classroom_id"], name: "index_sections_on_classroom_id"
