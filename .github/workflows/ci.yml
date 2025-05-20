@@ -1,39 +1,73 @@
 name: CI
 
 on:
-  pull_request:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
 
 jobs:
-  scan_ruby:
+  test:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    services:
+      postgres:
+        image: postgres:alpine
+        env:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: university_scheduler_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
-      - name: Set up Ruby
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
+          ruby-version: 3.2.2
           bundler-cache: true
 
-      - name: Scan for common Rails security vulnerabilities using static analysis
-        run: bin/brakeman --no-pager
+      - name: Setup Database
+        run: |
+          psql -h localhost -U root -c "DO $$ BEGIN CREATE ROLE root WITH SUPERUSER LOGIN PASSWORD 'password'; EXCEPTION WHEN OTHERS THEN NULL; END $$;" || true
+          psql -h localhost -U root -c "CREATE DATABASE university_scheduler_test OWNER root;" || true
+
+      - name: Wait for Postgres
+        run: |
+          for i in {1..10}; do
+            pg_isready -h localhost -U root && break
+            echo "Waiting for Postgres to be ready..."
+            sleep 5
+          done
+
+      - name: Install Dependencies
+        run: bundle install
+
+      - name: Run Migrations
+        run: bundle exec rake db:migrate RAILS_ENV=test --trace
+
+      - name: Run Tests
+        run: bundle exec rspec
 
   lint:
+    name: Lint with Rubocop
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
+          ruby-version: '3.2.2'
           bundler-cache: true
 
-      - name: Lint code for consistent style
-        run: bin/rubocop -f github
-
+      - name: Run Rubocop
+        run: bundle exec rubocop

@@ -71,6 +71,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.before(:each) do
+    Time.zone = 'Kyiv'
+  end
 end
 
 Shoulda::Matchers.configure do |config|
