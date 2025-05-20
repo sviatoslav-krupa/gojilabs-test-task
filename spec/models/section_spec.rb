@@ -35,13 +35,13 @@ RSpec.describe Section, type: :model do
     it { should validate_presence_of(:start_time) }
     it { should validate_presence_of(:duration_minutes) }
     it { should validate_presence_of(:weekdays) }
-    it { should validate_inclusion_of(:duration_minutes).in_array([50, 80]) }
+    it { should validate_inclusion_of(:duration_minutes).in_array([ 50, 80 ]) }
 
     describe '#no_student_schedule_conflicts' do
       let(:student) { create(:student) }
       let(:section1) do
         create(:section,
-               weekdays: ['monday', 'wednesday'],
+               weekdays: [ 'monday', 'wednesday' ],
                start_time: '08:00',
                duration_minutes: 50)
       end
@@ -51,7 +51,7 @@ RSpec.describe Section, type: :model do
       context 'when no time conflict' do
         let(:section2) do
           build(:section,
-                weekdays: ['monday'],
+                weekdays: [ 'monday' ],
                 start_time: '09:00',
                 duration_minutes: 50)
         end
@@ -65,7 +65,7 @@ RSpec.describe Section, type: :model do
       context 'when time conflict on same day' do
         let(:section2) do
           build(:section,
-                weekdays: ['monday'],
+                weekdays: [ 'monday' ],
                 start_time: '08:30',
                 duration_minutes: 50)
         end
@@ -80,7 +80,7 @@ RSpec.describe Section, type: :model do
       context 'when time conflict but different days' do
         let(:section2) do
           build(:section,
-                weekdays: ['tuesday'],
+                weekdays: [ 'tuesday' ],
                 start_time: '08:30',
                 duration_minutes: 50)
         end

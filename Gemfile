@@ -50,13 +50,13 @@ group :test do
   gem "shoulda-matchers", "~> 6.0"
 end
 
-gem 'prawn-rails'
+gem "prawn-rails"
 gem "rspec-rails", "~> 8.0"
 gem "factory_bot_rails", "~> 6.4"
 gem "rubocop", "~> 1.75"
 gem "rubocop-rails", "~> 2.32"
 gem "rubocop-rspec", "~> 3.6"
-gem 'faker'
+gem "faker"
 
 group :development do
   gem "annotaterb"

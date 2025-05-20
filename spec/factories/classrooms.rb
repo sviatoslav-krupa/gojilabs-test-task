@@ -12,4 +12,3 @@ FactoryBot.define do
     code { "A01" }
   end
 end
-

@@ -51,7 +51,7 @@ sections = TIME_SLOTS.map do |slot|
     subject: subjects.sample,
     teacher: teachers.sample,
     classroom: classrooms.sample,
-    duration_minutes: [50, 80].sample,
+    duration_minutes: [ 50, 80 ].sample,
     start_time: slot[:start_time],
     weekdays: slot[:days]
   )

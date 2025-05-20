@@ -45,7 +45,7 @@ class Section < ApplicationRecord
       next if conflicting_sections.empty?
 
       errors.add(:base, "Student #{student.full_name} has schedule conflict with sections: " +
-        conflicting_sections.map(&:id).join(', '))
+        conflicting_sections.map(&:id).join(", "))
     end
   end
 
