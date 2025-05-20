@@ -9,6 +9,6 @@
 #
 FactoryBot.define do
   factory :classroom do
-    code { "A01" }
+    code { Faker::IdNumber.valid }
   end
 end

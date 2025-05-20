@@ -50,10 +50,10 @@ RSpec.describe CreateEnrollmentService do
       end
     end
 
-    xcontext 'with schedule conflict' do
+    context 'with schedule conflict' do
       let!(:existing_enrollment) { create(:enrollment, student: student, section: conflicting_section) }
-      let(:conflicting_section) { create(:section, weekdays: 0b1010100, start_time: '08:00') }
-      let(:new_section) { create(:section, weekdays: 0b1010100, start_time: '08:00') }
+      let(:conflicting_section) { create(:section, weekdays: [ "monday" ], start_time: '08:00') }
+      let(:new_section) { create(:section, weekdays: [ "monday" ], start_time: '08:00') }
 
       it 'does not create conflicting enrollment' do
         expect {

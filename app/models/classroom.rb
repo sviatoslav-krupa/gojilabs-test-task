@@ -8,5 +8,5 @@
 #  updated_at :datetime         not null
 #
 class Classroom < ApplicationRecord
-  validates :code, presence: true, uniqueness: true
+  validates :code, presence: true, uniqueness: { case_sensitive: false }
 end

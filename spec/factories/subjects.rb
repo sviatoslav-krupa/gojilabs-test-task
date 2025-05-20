@@ -9,6 +9,6 @@
 #
 FactoryBot.define do
   factory :subject do
-    title { "Mathematics" }
+    title { Faker::Science.science }
   end
 end
