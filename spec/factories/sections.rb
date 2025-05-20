@@ -20,7 +20,7 @@
 #
 FactoryBot.define do
   factory :section do
-    teacher
+    teacher { association(:teacher) }
     subject
     classroom
     start_time { '08:00' }

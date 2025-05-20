@@ -19,7 +19,7 @@ require 'rails_helper'
 
 RSpec.describe Enrollment, type: :model do
   describe 'associations' do
-    it { should belong_to(:student).with_foreign_key("student_id").class_name("Student") }
+    it { should belong_to(:student).with_foreign_key("student_id").class_name("User") }
     it { should belong_to(:section) }
   end
 end

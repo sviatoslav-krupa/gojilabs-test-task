@@ -24,7 +24,7 @@ require 'rails_helper'
 
 RSpec.describe Section, type: :model do
   describe 'associations' do
-    it { should belong_to(:teacher).with_foreign_key("teacher_id").class_name("Teacher") }
+    it { should belong_to(:teacher).with_foreign_key("teacher_id").class_name("User") }
     it { should belong_to(:subject) }
     it { should belong_to(:classroom) }
     it { should have_many(:enrollments) }

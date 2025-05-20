@@ -14,6 +14,6 @@
 #  index_enrollments_on_student_id  (student_id)
 #
 class Enrollment < ApplicationRecord
-  belongs_to :student, class_name: "Student", foreign_key: "student_id"
+  belongs_to :student, class_name: "User", foreign_key: "student_id"
   belongs_to :section
 end

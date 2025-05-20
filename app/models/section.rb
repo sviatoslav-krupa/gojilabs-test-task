@@ -19,7 +19,7 @@
 #  index_sections_on_teacher_id    (teacher_id)
 #
 class Section < ApplicationRecord
-  belongs_to :teacher, class_name: "Teacher", foreign_key: "teacher_id"
+  belongs_to :teacher, class_name: "User", foreign_key: "teacher_id"
   belongs_to :subject
   belongs_to :classroom
   has_many :enrollments
