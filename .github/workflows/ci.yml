@@ -9,7 +9,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    env:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST: localhost
+      TZ: Europe/Kyiv
     services:
       postgres:
         image: postgres:alpine
