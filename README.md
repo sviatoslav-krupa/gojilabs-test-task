@@ -1,3 +1,7 @@
+
+![RSpec](https://github.com/sviatoslav-krupa/gojilabs-test-task/actions/workflows/rspec.yml/badge.svg?branch=main&label=RSpec)
+![Rubocop](https://github.com/sviatoslav-krupa/gojilabs-test-task/actions/workflows/rubocop.yml/badge.svg?branch=main&label=Rubocop)
+
 # What's done
 1. Designed database
 2. Added needed models with described relationships and validations
