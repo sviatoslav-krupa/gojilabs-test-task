@@ -58,6 +58,7 @@ gem "rubocop", "~> 1.75"
 gem "rubocop-rails", "~> 2.32"
 gem "rubocop-rspec", "~> 3.6"
 gem "faker"
+gem 'pry', '~> 0.15.0'
 
 group :development do
   gem "annotaterb"
